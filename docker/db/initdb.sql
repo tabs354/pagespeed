@@ -1,0 +1,2 @@
+CREATE DATABASE `pagespeed` CHARACTER SET utf8mb4;
+CREATE DATABASE `pagespeed_test` CHARACTER SET utf8mb4;
