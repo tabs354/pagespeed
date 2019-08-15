@@ -17,7 +17,28 @@
     <![endif]-->
   </head>
   <body>
-    <%= render "layouts/navigation" %>
+  <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "PAGE SPEED", root_path , class:"navbar-brand", id:"logo" %>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to "Users", "#" , id:"nav-text"%></li>
+          <li><%= link_to "DNS", "#", id:"nav-text"%></li>
+          <li><%= link_to "Test Speed", "#", id:"nav-text"%></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Logout", "#", id:"nav-text"%></li>
+          <li><%= link_to "Login", "#", id:"nav-text"%></li>
+          <li><%= link_to "Sign up", "#", id:"nav-text"%></li>
+        </ul>
+      </div>
+    </div>
+  </div>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -26,7 +47,12 @@
         </div>
       </div><!--/row-->
     </div> <!-- /container -->
-    <%= render "layouts/footer" %>
+  <footer class="page-footer">
+    <div class="container-fluid">
+      <medium style="float: left">Copyright <span class="glyphicon glyphicon-copyright-mark"></span> 2019: Page Speed</medium>
+      <medium style="float: right">Developed By Jasper T. Tabacug</medium>
+    </div>
+  </footer>
 
   </body>
 </html>
