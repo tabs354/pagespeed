@@ -1,3 +1,25 @@
+#logo {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar {
+  background-image:
+          linear-gradient(to right
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B);
+}
+
+#nav-text {
+  color: white;
+}
+
+#nav-text:hover {
+  color: black;
+}
 .page-footer {
   bottom: 0;
   position: fixed;
@@ -6,6 +28,12 @@
   padding-bottom: 5px;
   margin-top: 5px;
   color: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.52);
-  background-color: rgba(126, 124, 252, 0.97);
+  border-top: 1px solid #000000;
+  background-image:
+          linear-gradient(to right
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B
+          , #CB4335,#E74C3C,#CD6155,#C0392B);
 }
