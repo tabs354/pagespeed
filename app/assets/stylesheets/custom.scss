@@ -37,3 +37,24 @@
           , #CB4335,#E74C3C,#CD6155,#C0392B
           , #CB4335,#E74C3C,#CD6155,#C0392B);
 }
+
+#form-content {
+  margin-top: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-image: linear-gradient(to right, #CB4335,#E74C3C,#CD6155,#C0392B);
+  border-style: outset;
+  border-radius: 5px;
+  border-color: lightcoral;
+}
+.form-group {
+  color: white;
+}
+.form-header{
+  color: white;
+  padding-bottom: 20px;
+}
+
+.form-group {
+  padding-bottom: 20px;
+}

@@ -32,9 +32,12 @@
           <li><%= link_to "Test Speed", "#", id:"nav-text"%></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Logout", "#", id:"nav-text"%></li>
-          <li><%= link_to "Login", "#", id:"nav-text"%></li>
-          <li><%= link_to "Sign up", "#", id:"nav-text"%></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, id:"nav-text"%></li>
+          <% else %>
+            <li><%= link_to "Login", new_user_session_path, id:"nav-text"%></li>
+            <li><%= link_to "Sign up", new_user_registration_path, id:"nav-text"%></li>
+          <% end %>
         </ul>
       </div>
     </div>
