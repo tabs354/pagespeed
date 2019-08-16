@@ -20,6 +20,7 @@
 #nav-text:hover {
   color: black;
 }
+
 .page-footer {
   bottom: 0;
   position: fixed;
@@ -47,9 +48,11 @@
   border-radius: 5px;
   border-color: lightcoral;
 }
+
 .form-group {
   color: white;
 }
+
 .form-header{
   color: white;
   padding-bottom: 20px;
@@ -57,4 +60,8 @@
 
 .form-group {
   padding-bottom: 20px;
+}
+
+#nav-user {
+  color: white;
 }

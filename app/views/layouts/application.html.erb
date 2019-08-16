@@ -27,13 +27,18 @@
       <%= link_to "PAGE SPEED", root_path , class:"navbar-brand", id:"logo" %>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav navbar-left">
-          <li><%= link_to "Users", "#" , id:"nav-text"%></li>
+          <% if user_is_admin? %>
+            <li><%= link_to "Users", admin_users_path , id:"nav-text"%></li>
+          <% end %>
           <li><%= link_to "DNS", "#", id:"nav-text"%></li>
           <li><%= link_to "Test Speed", "#", id:"nav-text"%></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, id:"nav-text"%></li>
+            <li class="nav-item">
+              <p class="navbar-text" id="nav-user">Signed in as <%= current_user.email %></p>
+            </li>
           <% else %>
             <li><%= link_to "Login", new_user_session_path, id:"nav-text"%></li>
             <li><%= link_to "Sign up", new_user_registration_path, id:"nav-text"%></li>

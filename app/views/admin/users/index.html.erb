@@ -1,0 +1,37 @@
+<div class="container-fluid" >
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+    <li class="active">Users</li>
+  </ol>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">Users Management</h3>
+    </div>
+    <div class="panel-body" >
+      <h2 align="center">List of Users</h2>
+      <%= paginate @users %>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do | user | %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <%= link_to "Edit", "#", class:"label label-primary" %>
+            <%= link_to "Delete", "#", class:"label label-danger" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
