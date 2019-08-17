@@ -8,6 +8,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
   <div class="navbar navbar-default navbar-static-top">
@@ -20,7 +22,7 @@
       <%= link_to "PAGE SPEED", root_path , class:"navbar-brand", id:"logo" %>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav navbar-left">
-          <% if user_is_admin? %>
+          <% if current_user.admin? %>
             <li><%= link_to "Users", admin_users_path , id:"nav-text"%></li>
           <% end %>
           <li><%= link_to "DNS", "#", id:"nav-text"%></li>
