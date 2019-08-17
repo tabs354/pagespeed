@@ -1,6 +1,7 @@
 module Admin
   class UsersController < ApplicationController
-    before_action :authenticate_user!, :redirect_if_not_admin
+    before_action :authenticate_user!
+    before_action :redirect_if_not_admin
 
     def index
       @users = User.page(params[:page]).per(6)
