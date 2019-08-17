@@ -1,8 +1,3 @@
-#logo {
-  color: white;
-  font-weight: bold;
-}
-
 .navbar {
   background-image:
           linear-gradient(to right
@@ -11,14 +6,11 @@
           , #CB4335,#E74C3C,#CD6155,#C0392B
           , #CB4335,#E74C3C,#CD6155,#C0392B
           , #CB4335,#E74C3C,#CD6155,#C0392B);
-}
 
-#nav-text {
-  color: white;
-}
-
-#nav-text:hover {
-  color: black;
+  .navbar-brand {
+    color: white !important;
+    font-weight: bold;
+  }
 }
 
 .page-footer {
@@ -51,6 +43,7 @@
 
 .form-group {
   color: white;
+  padding-bottom: 20px;
 }
 
 .form-header{
@@ -58,10 +51,18 @@
   padding-bottom: 20px;
 }
 
-.form-group {
-  padding-bottom: 20px;
-}
 
-#nav-user {
-  color: white;
+.navbar-nav {
+  //Regular Links
+  >li a {
+    color: white !important;
+    &:hover {
+      color: black !important;
+    }
+  }
+
+  //Dropdown when open
+  .open a{
+    color: black !important;
+  }
 }
