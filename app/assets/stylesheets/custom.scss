@@ -1,11 +1,5 @@
 .navbar {
-  background-image:
-          linear-gradient(to right
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B);
+  background-color: #863F3F;
 
   .navbar-brand {
     color: white !important;
@@ -22,13 +16,7 @@
   margin-top: 5px;
   color: #ffffff;
   border-top: 1px solid #000000;
-  background-image:
-          linear-gradient(to right
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B);
+  background-color: #863F3F;
 }
 
 #form-content {
@@ -44,13 +32,16 @@
 .form-group {
   color: white;
   padding-bottom: 20px;
+
+  .control-label {
+    color: black;
+  }
 }
 
 .form-header{
   color: white;
   padding-bottom: 20px;
 }
-
 
 .navbar-nav {
   //Regular Links
@@ -65,4 +56,13 @@
   .open a{
     color: black !important;
   }
+}
+
+.panel-heading {
+  background-color: #985A5A !important;
+  color: white !important;
+}
+
+.panel-default {
+  border-color: #621E09;
 }
