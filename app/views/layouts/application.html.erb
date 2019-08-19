@@ -20,11 +20,13 @@
       <%= link_to "PAGE SPEED", root_path , class:"navbar-brand" %>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav navbar-left">
-          <% if current_user.admin? %>
-            <li><%= link_to "Users", admin_users_path %></li>
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li><%= link_to "Users", admin_users_path %></li>
+            <% end %>
+            <li><%= link_to "DNS", "#" %></li>
+            <li><%= link_to "Test Speed", "#" %></li>
           <% end %>
-          <li><%= link_to "DNS", "#" %></li>
-          <li><%= link_to "Test Speed", "#" %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
