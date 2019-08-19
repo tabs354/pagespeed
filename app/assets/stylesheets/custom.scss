@@ -1,24 +1,10 @@
-#logo {
-  color: white;
-  font-weight: bold;
-}
-
 .navbar {
-  background-image:
-          linear-gradient(to right
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B);
-}
+  background-color: #863F3F;
 
-#nav-text {
-  color: white;
-}
-
-#nav-text:hover {
-  color: black;
+  .navbar-brand {
+    color: white !important;
+    font-weight: bold;
+  }
 }
 
 .page-footer {
@@ -30,13 +16,7 @@
   margin-top: 5px;
   color: #ffffff;
   border-top: 1px solid #000000;
-  background-image:
-          linear-gradient(to right
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B
-          , #CB4335,#E74C3C,#CD6155,#C0392B);
+  background-color: #863F3F;
 }
 
 #form-content {
@@ -51,6 +31,11 @@
 
 .form-group {
   color: white;
+  padding-bottom: 20px;
+
+  .control-label {
+    color: black;
+  }
 }
 
 .form-header{
@@ -58,10 +43,26 @@
   padding-bottom: 20px;
 }
 
-.form-group {
-  padding-bottom: 20px;
+.navbar-nav {
+  //Regular Links
+  >li a {
+    color: white !important;
+    &:hover {
+      color: black !important;
+    }
+  }
+
+  //Dropdown when open
+  .open a{
+    color: black !important;
+  }
 }
 
-#nav-user {
-  color: white;
+.panel-heading {
+  background-color: #985A5A !important;
+  color: white !important;
+}
+
+.panel-default {
+  border-color: #621E09;
 }
