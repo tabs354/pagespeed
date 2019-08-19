@@ -7,6 +7,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'hirb'
 gem 'kaminari'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
