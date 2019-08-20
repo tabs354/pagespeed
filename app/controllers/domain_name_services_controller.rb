@@ -1,11 +1,13 @@
 class DomainNameServicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_dns, only: [:show, :edit, :update]
+  before_action :require_same_user, only: [:update, :edit]
   before_action :dns_new, only: :create
   before_action :clear_prefix, only: [:update, :create]
 
   def index
-    @domain_name_services = current_user.domain_name_services
+    @domain_name_services = DomainNameService.all
+    @domain_name_services = @domain_name_services.where(user_id: current_user.id) unless current_user.admin?
     @domain_name_services = @domain_name_services.where(status: params[:status]) if params[:status]
     @domain_name_services = @domain_name_services.page(params[:page]).per(6)
   end
@@ -43,7 +45,7 @@ class DomainNameServicesController < ApplicationController
   end
 
   def set_dns
-    @domain_name_service = current_user.domain_name_services.find(params[:id])
+    @domain_name_service = DomainNameService.find(params[:id])
   end
 
   def dns_new
@@ -55,5 +57,12 @@ class DomainNameServicesController < ApplicationController
     dns.delete_prefix! "https://"
     dns.delete_prefix! "http://"
     @domain_name_service.dns = dns
+  end
+
+  def require_same_user
+    if current_user != @domain_name_service.user and !current_user.admin?
+      flash[:danger] = "You can only edit or update your own DNS"
+      redirect_to root_path
+    end
   end
 end
