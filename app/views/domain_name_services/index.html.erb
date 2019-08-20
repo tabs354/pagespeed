@@ -12,7 +12,7 @@
     </div>
     <div align="center">
       <h4 align="center">Filter By Status:</h4>
-      <%= link_to "All", domain_name_services_path(:status=> "all"), class: "btn btn-primary" %>
+      <%= link_to "All", domain_name_services_path(:status=> nil), class: "btn btn-primary" %>
       <%= link_to "On", domain_name_services_path(:status=> "on"), class: "btn btn-primary" %>
       <%= link_to "Off", domain_name_services_path(:status=> "off"), class: "btn btn-primary" %>
     </div>

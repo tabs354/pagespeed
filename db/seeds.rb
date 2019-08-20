@@ -12,7 +12,7 @@ end
   dns = "www." + dns.downcase + ".com"
   DomainNameService.create(dns: dns,
                  status: [:off, :on].sample,
-                 user_id: Faker::Number.within(range: 1..5))
+                 user_id: User.pluck(:id).sample)
   puts "DNS: #{dns}"
 end
 
