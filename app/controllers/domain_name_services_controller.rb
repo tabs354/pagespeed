@@ -1,7 +1,7 @@
 class DomainNameServicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_dns, only: [:show, :edit, :update]
-  before_action :require_same_user, only: [:update, :edit]
+  before_action :require_same_user, only: [:update, :edit, :show]
   before_action :dns_new, only: :create
   before_action :clear_prefix, only: [:update, :create]
 
@@ -60,7 +60,7 @@ class DomainNameServicesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @domain_name_service.user and !current_user.admin?
+    unless current_user == @domain_name_service.user or current_user.admin?
       flash[:danger] = "You can only edit or update your own DNS"
       redirect_to root_path
     end
