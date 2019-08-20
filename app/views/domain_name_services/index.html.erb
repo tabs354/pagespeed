@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+    <li class="active">Domain Name Services</li>
+  </ol>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">Domain Name Services Management</h3>
+    </div>
+    <div class="panel-body">
+      <h2 align="center">List of Domain Name Services</h2>
+    </div>
+    <div align="center">
+      <h4 align="center">Filter By Status:</h4>
+      <%= link_to "All", domain_name_services_path(:status=> nil), class: "btn btn-primary" %>
+      <%= link_to "On", domain_name_services_path(:status=> "on"), class: "btn btn-primary" %>
+      <%= link_to "Off", domain_name_services_path(:status=> "off"), class: "btn btn-primary" %>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Domain Name Service</th>
+        <th>Https</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @domain_name_services.each do |dns| %>
+        <tr>
+          <td><%= dns.dns %></td>
+          <td><%= dns.https %></td>
+          <td><%= dns.status %></td>
+          <td>
+            <%= link_to "Edit", "#", class: "label label-primary" %>
+            <%= link_to "Delete", "#", class: "label label-danger" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+      <div align="center"><%= paginate @domain_name_services %></div>
+    </table>
+  </div>
+</div>

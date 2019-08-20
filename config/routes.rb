@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
+  resources :domain_name_services, only: :index
 end
