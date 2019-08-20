@@ -23,7 +23,7 @@ class DomainNameServicesController < ApplicationController
   end
 
   def show
-
+    @domain_name_service = current_user.domain_name_services.find(params[:id])
   end
 
   def edit

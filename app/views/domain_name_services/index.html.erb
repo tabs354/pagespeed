@@ -31,7 +31,8 @@
           <td><%= dns.https %></td>
           <td><%= dns.status %></td>
           <td>
-            <%= link_to "Edit", "#", class: "label label-primary" %>
+            <%= link_to "Read", domain_name_service_path(dns), class: "label label-primary" %>
+            <%= link_to "Edit", edit_domain_name_service_path(dns), class: "label label-warning" %>
           </td>
         </tr>
       <% end %>
