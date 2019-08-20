@@ -11,7 +11,7 @@ end
   dns = Faker::App.name.delete(" ")
   dns = "www." + dns.downcase + ".com"
   DomainNameService.create(dns: dns,
-                 status: ["off", "on"].sample,
+                 status: [:off, :on].sample,
                  user_id: Faker::Number.within(range: 1..5))
   puts "DNS: #{dns}"
 end
