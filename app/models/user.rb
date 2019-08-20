@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :domain_name_services
+
+  has_many :domain_name_services, dependent: :restrict_with_error
 
   def admin?
     self.role == 'admin'
