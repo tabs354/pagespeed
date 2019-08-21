@@ -8,9 +8,7 @@ class DomainNameService < ApplicationRecord
   before_update :clear_prefix
 
   def clear_prefix
-    dns = self.dns
-    dns.delete_prefix! "https://"
-    dns.delete_prefix! "http://"
-    self.dns = dns
+    self.dns.delete_prefix! "https://"
+    self.dns.delete_prefix! "http://"
   end
 end
