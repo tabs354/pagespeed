@@ -22,6 +22,8 @@
         <th>Domain Name Service</th>
         <th>Https</th>
         <th>Status</th>
+        <th>Email</th>
+        <th>Role</th>
       </tr>
       </thead>
       <tbody>
@@ -30,6 +32,8 @@
           <td><%= dns.dns %></td>
           <td><%= dns.https %></td>
           <td><%= dns.status %></td>
+          <td><%= dns.user.email %></td>
+          <td><%= dns.user.role %></td>
           <td>
             <%= link_to "Read", domain_name_service_path(dns), class: "label label-primary" %>
             <%= link_to "Edit", edit_domain_name_service_path(dns), class: "label label-warning" %>
