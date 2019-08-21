@@ -6,7 +6,7 @@ class DomainNameServicesController < ApplicationController
   def index
     @domain_name_services = current_user.admin? ? DomainNameService.all : current_user.domain_name_services
     @domain_name_services = @domain_name_services.where(status: params[:status]) if params[:status]
-    @domain_name_services = @domain_name_services.page(params[:page]).per(6)
+    @domain_name_services = @domain_name_services.includes(:user).page(params[:page]).per(6)
   end
 
   def new
