@@ -8,7 +8,7 @@
       <h3 class="panel-title">Domain Name Services Management</h3>
     </div>
     <div class="panel-body">
-      <h2 align="center">List of Domain Name Services</h2>
+      <h2 align="center">List of Domain Name Services <%= link_to "+  Create", new_domain_name_service_path , class: "btn btn-success" %></h2>
     </div>
     <div align="center">
       <h4 align="center">Filter By Status:</h4>
@@ -31,8 +31,8 @@
           <td><%= dns.https %></td>
           <td><%= dns.status %></td>
           <td>
-            <%= link_to "Edit", "#", class: "label label-primary" %>
-            <%= link_to "Delete", "#", class: "label label-danger" %>
+            <%= link_to "Read", domain_name_service_path(dns), class: "label label-primary" %>
+            <%= link_to "Edit", edit_domain_name_service_path(dns), class: "label label-warning" %>
           </td>
         </tr>
       <% end %>

@@ -66,3 +66,14 @@
 .panel-default {
   border-color: #621E09;
 }
+.radio_button {
+  display: inline;
+}
+
+.pull-left {
+  >label {
+    font-weight: normal;
+    padding-left: 5px;
+    padding-right: 10px;
+  }
+}

@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "DNS", domain_name_services_path %></li>
+    <li class="active">Create DNS</li>
+  </ol>
+  <%= render "devise/shared/error_messages", resource: @domain_name_service %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create New Domain Name Service</h3>
+    </div>
+
+    <%= render "form" %>
+  </div>
+</div>
+
