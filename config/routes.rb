@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :domain_name_services, except: :destroy
+  resources :domain_name_services, except: :destroy do
+    get 'pagespeed_insights', to: 'pagespeed_insights#show'
+  end
 
-  get '/search', to: 'searches#new'
-  post '/search', to: 'searches#show'
+  #get '/test-speed', to: 'pagespeed_insights#new'
+
 end
