@@ -1,0 +1,17 @@
+<%
+  data1 = distributions[0]["proportion"] * 100
+  data2 = distributions[1]["proportion"] * 100
+  data3 = distributions[2]["proportion"] * 100
+%>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: <%= data1 %>% ">
+    <span><%= data1.to_i %>%</span>
+  </div>
+  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%= data2 %>% ">
+    <span><%= data2.to_i %>%</span>
+  </div>
+  <div class="progress-bar progress-bar-danger" style="width: <%= data3 %>% ">
+    <span><%= data3.to_i %>%</span>
+  </div>
+</div>

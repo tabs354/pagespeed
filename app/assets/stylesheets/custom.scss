@@ -58,13 +58,13 @@
   }
 }
 
-.panel-heading {
-  background-color: #985A5A !important;
-  color: white !important;
-}
 
 .panel-default {
   border-color: #621E09;
+  .panel-heading {
+    background-color: #985A5A !important;
+    color: white !important;
+  }
 }
 .radio_button {
   display: inline;

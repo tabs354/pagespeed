@@ -10,80 +10,43 @@
     </div>
     <div class="panel-body">
       <h2 align="center">Analysis result of <%= @result["id"] %></h2><br>
+      <div class="alert alert-info" role="alert">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <strong>NOTE:</strong> Percentages display may not total to 100% due to rounding.
+      </div>
       <%
         field_data = @result["loadingExperience"]
-        field_input_delay = field_data["metrics"]["FIRST_INPUT_DELAY_MS"]
-        field_paint = field_data["metrics"]["FIRST_CONTENTFUL_PAINT_MS"]
-
         origin_data = @result["originLoadingExperience"]
-        origin_input_delay = origin_data["metrics"]["FIRST_INPUT_DELAY_MS"]
-        origin_paint = origin_data["metrics"]["FIRST_CONTENTFUL_PAINT_MS"]
-
         lighthouse_items = @result["lighthouseResult"]["audits"]["metrics"]["details"]["items"][0]
-
       %>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Field Data</h4>
-          <p>Overall Result: <%= field_data["overall_category"] %></p>
-          <div class="col-xs-6">
-            <hr>
-            <p>First Contentful Paint: <%= field_input_delay["category"] %></p>
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" style="width: 70%">
-                <span class="sr-only">75% Complete (success)</span>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4 class="panel-custom-title">Field Data</h4><hr>
+              <%= render "data", data: field_data %>
+            </div>
+          </div>
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4>Origin Data</h4><hr>
+              <%= render "data", data: origin_data %>
+            </div>
+          </div>
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4>Lighthouse Result</h4><hr>
+              <div class="col-xs-6">
+                <p>First Contentful Paint: <%= lighthouse_items["firstContentfulPaint"] %></p>
+                <p>First Meaningful Paint: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
+                <p>Estimated Input Latency: <%= lighthouse_items["estimatedInputLatency"] %></p>
               </div>
-              <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-                <span class="sr-only">20% Complete (warning)</span>
-              </div>
-              <div class="progress-bar progress-bar-danger" style="width: 10%">
-                <span class="sr-only">10% Complete (danger)</span>
+              <div class="col-xs-6">
+                <p>Time to Interactive: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
+                <p>First CPU Idle: <%= lighthouse_items["firstCPUIdle"] %></p>
+                <p>Speed Index: <%= lighthouse_items["speedIndex"] %></p>
               </div>
             </div>
-            <hr>
-          </div>
-          <div class="col-xs-6">
-            <hr>
-            <p>First Input Delay: <%= field_paint["category"] %></p>
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" style="width: 70%">
-                <span class="sr-only">75% Complete (success)</span>
-              </div>
-              <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-                <span class="sr-only">20% Complete (warning)</span>
-              </div>
-              <div class="progress-bar progress-bar-danger" style="width: 10%">
-                <span class="sr-only">10% Complete (danger)</span>
-              </div>
-            </div>
-            <hr>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Origin Data</h4>
-          <p>Overall Result: <%= @result["originLoadingExperience"]["overall_category"] %></p>
-          <div class="col-xs-6">
-            <hr><p>First Contentful Paint: <%= origin_input_delay["category"] %></p><hr>
-          </div>
-          <div class="col-xs-6">
-            <hr><p>First Input Delay: <%= origin_paint["category"] %></p><hr>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Lighthouse Result</h4>
-          <div class="col-xs-6">
-            <hr><p>First Contentful Paint: <%= lighthouse_items["firstContentfulPaint"] %></p>
-            <hr><p>First Meaningful Paint: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
-            <hr><p>Estimated Input Latency: <%= lighthouse_items["estimatedInputLatency"] %></p><hr>
-          </div>
-          <div class="col-xs-6">
-            <hr><p>Time to Interactive: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
-            <hr><p>First CPU Idle: <%= lighthouse_items["firstCPUIdle"] %></p>
-            <hr><p>Speed Index: <%= lighthouse_items["speedIndex"] %></p><hr>
           </div>
         </div>
       </div>
