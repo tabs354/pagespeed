@@ -17,7 +17,7 @@
       <%
         field_data = @result["loadingExperience"]
         origin_data = @result["originLoadingExperience"]
-        lighthouse_items = @result["lighthouseResult"]["audits"]["metrics"]["details"]["items"][0]
+        lighthouse_audits = @result["lighthouseResult"]["audits"]
       %>
       <div class="col-xs-12">
         <div class="row">
@@ -37,14 +37,14 @@
             <div class="panel-body">
               <h4>Lighthouse Result</h4><hr>
               <div class="col-xs-6">
-                <p>First Contentful Paint: <%= lighthouse_items["firstContentfulPaint"] %></p>
-                <p>First Meaningful Paint: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
-                <p>Estimated Input Latency: <%= lighthouse_items["estimatedInputLatency"] %></p>
+                <p>First Contentful Paint: <%= lighthouse_audits["first-contentful-paint"]["displayValue"] %></p>
+                <p>First Meaningful Paint: <%= lighthouse_audits["first-meaningful-paint"]["displayValue"] %></p>
+                <p>Estimated Input Latency: <%= lighthouse_audits["estimated-input-latency"]["displayValue"] %></p>
               </div>
               <div class="col-xs-6">
-                <p>Time to Interactive: <%= lighthouse_items["firstMeaningfulPaint"] %></p>
-                <p>First CPU Idle: <%= lighthouse_items["firstCPUIdle"] %></p>
-                <p>Speed Index: <%= lighthouse_items["speedIndex"] %></p>
+                <p>Time to Interactive: <%= lighthouse_audits["interactive"]["displayValue"] %></p>
+                <p>First CPU Idle: <%= lighthouse_audits["first-cpu-idle"]["displayValue"] %></p>
+                <p>Speed Index: <%= lighthouse_audits["speed-index"]["displayValue"] %></p>
               </div>
             </div>
           </div>
