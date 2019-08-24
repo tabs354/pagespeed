@@ -16,6 +16,9 @@ class PagespeedInsightsController < ApplicationController
     else
       puts 'It worked!'
       @result = ActiveSupport::JSON.decode(@result)
+      @field_data = @result["loadingExperience"]
+      @origin_data = @result["originLoadingExperience"]
+      @lighthouse_audits = @result["lighthouseResult"]["audits"]
     end
   end
 end

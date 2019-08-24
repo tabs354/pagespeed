@@ -15,36 +15,34 @@
         <strong>NOTE:</strong> Percentages display may not total to 100% due to rounding.
       </div>
       <%
-        field_data = @result["loadingExperience"]
-        origin_data = @result["originLoadingExperience"]
-        lighthouse_audits = @result["lighthouseResult"]["audits"]
+
       %>
       <div class="col-xs-12">
         <div class="row">
           <div class="panel panel-danger">
             <div class="panel-body">
               <h4 class="panel-custom-title">Field Data</h4><hr>
-              <%= render "data", data: field_data %>
+              <%= render "data", data: @field_data %>
             </div>
           </div>
           <div class="panel panel-danger">
             <div class="panel-body">
               <h4>Origin Data</h4><hr>
-              <%= render "data", data: origin_data %>
+              <%= render "data", data: @origin_data %>
             </div>
           </div>
           <div class="panel panel-danger">
             <div class="panel-body">
               <h4>Lighthouse Result</h4><hr>
-              <div class="col-xs-6">
-                <p>First Contentful Paint: <%= lighthouse_audits["first-contentful-paint"]["displayValue"] %></p>
-                <p>First Meaningful Paint: <%= lighthouse_audits["first-meaningful-paint"]["displayValue"] %></p>
-                <p>Estimated Input Latency: <%= lighthouse_audits["estimated-input-latency"]["displayValue"] %></p>
+              <div class="col-xs-6 lighthouse">
+                <div class="well orange">First Contentful Paint: <%= @lighthouse_audits["first-contentful-paint"]["displayValue"] %></div>
+                <div class="well blue">First Meaningful Paint: <%= @lighthouse_audits["first-meaningful-paint"]["displayValue"] %></div>
+                <div class="well green">Estimated Input Latency: <%= @lighthouse_audits["estimated-input-latency"]["displayValue"] %></div>
               </div>
-              <div class="col-xs-6">
-                <p>Time to Interactive: <%= lighthouse_audits["interactive"]["displayValue"] %></p>
-                <p>First CPU Idle: <%= lighthouse_audits["first-cpu-idle"]["displayValue"] %></p>
-                <p>Speed Index: <%= lighthouse_audits["speed-index"]["displayValue"] %></p>
+              <div class="col-xs-6 lighthouse">
+                <div class="well orange">Time to Interactive: <%= @lighthouse_audits["interactive"]["displayValue"] %></div>
+                <div class="well blue">First CPU Idle: <%= @lighthouse_audits["first-cpu-idle"]["displayValue"] %></div>
+                <div class="well green">Speed Index: <%= @lighthouse_audits["speed-index"]["displayValue"] %></div>
               </div>
             </div>
           </div>
