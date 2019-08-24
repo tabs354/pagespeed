@@ -8,10 +8,10 @@
 
 <p align="center"><b>Overall Result: <i><%= data["overall_category"] %></i></b></p><br>
 <div class="col-xs-6">
-  <p>First Contentful Paint: <%= paint["category"] %></p>
+  <p><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>  First Contentful Paint: <%= paint["category"] %></p>
   <%= render "progress", distributions: paint_distributions %>
 </div>
 <div class="col-xs-6">
-  <p>First Input Delay: <%= input_delay["category"] %></p>
+  <p><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>  First Input Delay: <%= input_delay["category"] %></p>
   <%= render "progress", distributions: input_delay_distributions %>
 </div>
