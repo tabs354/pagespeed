@@ -1,4 +1,10 @@
 module ApplicationHelper
+
+  def progress(index)
+    progress = [:success, :info, :danger]
+    progress[index]
+  end
+
   def get_data(data, content)
     data["metrics"][content]["category"]
   end

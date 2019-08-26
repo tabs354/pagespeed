@@ -10,7 +10,4 @@ Rails.application.routes.draw do
   resources :domain_name_services, except: :destroy do
     get 'pagespeed_insights', to: 'pagespeed_insights#show'
   end
-
-  #get '/test-speed', to: 'pagespeed_insights#new'
-
 end

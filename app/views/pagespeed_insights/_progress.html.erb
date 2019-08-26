@@ -1,11 +1,7 @@
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: <%= d1 = set_proportion(distributions[0]) %>% ">
-    <span><%= d1.to_i %>%</span>
-  </div>
-  <div class="progress-bar progress-bar-info " style="width: <%= d2 = set_proportion(distributions[1]) %>% ">
-    <span><%= d2.to_i %>%</span>
-  </div>
-  <div class="progress-bar progress-bar-danger" style="width: <%= d3 = set_proportion(distributions[2]) %>% ">
-    <span><%= d3.to_i %>%</span>
-  </div>
+  <% 3.times do |index| %>
+    <div class="progress-bar progress-bar-<%= progress(index) %>" style="width: <%= set_proportion(distributions[index]) %>% ">
+      <span><%= set_proportion(distributions[index]).to_i %>%</span>
+    </div>
+  <% end %>
 </div>

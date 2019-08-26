@@ -1,6 +1,5 @@
 class PagespeedInsightsController < ApplicationController
   before_action :authenticate_user!
-
   def show
     domain_name_service = DomainNameService.find(params[:domain_name_service_id])
     begin
