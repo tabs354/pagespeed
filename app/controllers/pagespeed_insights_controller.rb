@@ -1,5 +1,4 @@
 class PagespeedInsightsController < ApplicationController
-  require 'rest-client'
   before_action :authenticate_user!
 
   def show
@@ -9,12 +8,12 @@ class PagespeedInsightsController < ApplicationController
                                { params: {url: "https://" + domain_name_service.dns,
                                          key: "AIzaSyAvi9yRt5Jp6hcaKdKquA_QSzmXfPTk_Qg"} })
     rescue RestClient::ExceptionWithResponse => result
-      puts result.response
+      Rails.logger.info result.response
       error =  ActiveSupport::JSON.decode(result.response)
       flash[:danger] = error
       redirect_to domain_name_services_path
     else
-      puts 'It worked!'
+      Rails.logger.info 'It worked!'
       @result = ActiveSupport::JSON.decode(@result)
       @field_data = @result["loadingExperience"]
       @origin_data = @result["originLoadingExperience"]
