@@ -1,7 +1,7 @@
 <div class="progress">
-  <% 3.times do |index| %>
-    <div class="progress-bar progress-bar-<%= progress(index) %>" style="width: <%= set_proportion(distributions[index]) %>% ">
-      <span><%= set_proportion(distributions[index]).to_i %>%</span>
+  <% distributions.each_with_index do |distribution, index| %>
+    <div class="progress-bar progress-bar-<%= progress(index) %>" style="width: <%= set_proportion(distribution) %>% ">
+      <span><%= set_proportion(distribution).to_i %>%</span>
     </div>
   <% end %>
 </div>
