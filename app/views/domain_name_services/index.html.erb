@@ -3,7 +3,7 @@
     <li><%= link_to "Home", root_path %></li>
     <li class="active">Domain Name Services</li>
   </ol>
-  <div class="panel panel-danger">
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Domain Name Services Management</h3>
     </div>
@@ -37,6 +37,7 @@
           <td>
             <%= link_to "Read", domain_name_service_path(dns), class: "label label-primary" %>
             <%= link_to "Edit", edit_domain_name_service_path(dns), class: "label label-warning" %>
+            <%= link_to "Page Speed Insight", domain_name_service_pagespeed_insights_path(dns), class: "label label-success" %>
           </td>
         </tr>
       <% end %>
