@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_051133) do
+ActiveRecord::Schema.define(version: 2019_08_27_063134) do
 
   create_table "domain_name_services", force: :cascade do |t|
     t.boolean "https", default: true
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2019_08_19_051133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_domain_name_services_on_user_id"
+  end
+
+  create_table "pagespeed_insights", force: :cascade do |t|
+    t.text "field_paint"
+    t.text "field_input"
+    t.text "origin_paint"
+    t.text "origin_input"
+    t.text "lighthouse_result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "domain_name_service_id"
   end
 
   create_table "users", force: :cascade do |t|
