@@ -4,6 +4,7 @@ class PagespeedInsight < ApplicationRecord
   serialize :origin_paint, JSON
   serialize :origin_input, JSON
   serialize :lighthouse_result, JSON
+  serialize :overall_results, JSON
 
   belongs_to :domain_name_service
 end

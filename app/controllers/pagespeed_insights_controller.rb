@@ -27,9 +27,9 @@ class PagespeedInsightsController < ApplicationController
 
   def record_data(pagespeed_insight)
     if pagespeed_insight.save
-      flash[:success] = "Pagespeed analysis result was successfully recorded"
+      flash.now[:success] = "Pagespeed analysis result was successfully recorded"
     else
-      flash[:danger] = "Something went wrong in recording the pagespeed analysis result"
+      flash.now[:danger] = "Something went wrong in recording the pagespeed analysis result"
     end
   end
 
