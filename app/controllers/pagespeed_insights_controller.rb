@@ -20,17 +20,12 @@ class PagespeedInsightsController < ApplicationController
       @origin_data = @result["originLoadingExperience"]
       @lighthouse_audits = @result["lighthouseResult"]["audits"]
 
-      @pagespeed_insight = domain_name_service.pagespeed_insights.new
-      record_data(set_parameters(@field_data, @origin_data, @lighthouse_audits, @pagespeed_insight))
+      @pagespeed_insight = set_parameters(@field_data, @origin_data, @lighthouse_audits, domain_name_service.pagespeed_insights.new)
+      if @pagespeed_insight.save
+        flash.now[:success] = "Pagespeed analysis result was successfully recorded"
+      else
+        flash.now[:danger] = "Something went wrong in recording the pagespeed analysis result"
+      end
     end
   end
-
-  def record_data(pagespeed_insight)
-    if pagespeed_insight.save
-      flash.now[:success] = "Pagespeed analysis result was successfully recorded"
-    else
-      flash.now[:danger] = "Something went wrong in recording the pagespeed analysis result"
-    end
-  end
-
 end
