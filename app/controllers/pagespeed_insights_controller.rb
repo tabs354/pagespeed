@@ -6,12 +6,12 @@ class PagespeedInsightsController < ApplicationController
     domain_name_service = DomainNameService.find(params[:domain_name_service_id])
     begin
       @result = RestClient.get('https://www.googleapis.com/pagespeedonline/v5/runPagespeed',
-                               { params: {url: "https://" + domain_name_service.dns,
+                               { params: {url: domain_name_service.set_url,
                                          key: "AIzaSyAvi9yRt5Jp6hcaKdKquA_QSzmXfPTk_Qg"} })
     rescue RestClient::ExceptionWithResponse => result
       Rails.logger.info result.response
       error =  ActiveSupport::JSON.decode(result.response)
-      flash[:danger] = error
+      flash[:danger] = error["error"]["message"]
       redirect_to domain_name_services_path
     else
       Rails.logger.info 'It worked!'
