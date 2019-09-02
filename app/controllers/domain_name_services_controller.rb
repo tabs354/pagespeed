@@ -16,7 +16,7 @@ class DomainNameServicesController < ApplicationController
   def create
     @domain_name_service = current_user.domain_name_services.new(domain_name_service_params)
     if @domain_name_service.save
-      flash[:success] = "Domain Name Service was successfully created"
+      flash[:success] = 'Domain Name Service was successfully created'
       redirect_to domain_name_service_path(@domain_name_service)
     else
       render :new
@@ -31,7 +31,7 @@ class DomainNameServicesController < ApplicationController
 
   def update
     if @domain_name_service.update(domain_name_service_params)
-      flash[:success] = "Domain Name Service was successfully updated"
+      flash[:success] = 'Domain Name Service was successfully updated'
       redirect_to domain_name_service_path(@domain_name_service)
     else
       render :edit
@@ -50,7 +50,7 @@ class DomainNameServicesController < ApplicationController
 
   def require_same_user
     unless current_user == @domain_name_service.user or current_user.admin?
-      flash[:danger] = "You can only edit or update your own DNS"
+      flash[:danger] = 'You can only edit or update your own DNS'
       redirect_to root_path
     end
   end
