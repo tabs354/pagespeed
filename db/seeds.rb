@@ -7,11 +7,11 @@ require 'faker'
 end
 
 20.times do
-  dns = "www." + Faker::App.name.gsub(/\s+/, '-').downcase + ".com"
-  DomainNameService.create(dns: dns,
+  url = "www." + Faker::App.name.gsub(/\s+/, '-').downcase + ".com"
+  DomainNameService.create(url: url,
                            status: [:off, :on].sample,
                            user_id: User.pluck(:id).sample)
-  puts "DNS: #{dns}"
+  puts "URL: #{url}"
 end
 
 user = User.first

@@ -29,7 +29,7 @@
       <tbody>
       <% @domain_name_services.each do |dns| %>
         <tr>
-          <td><%= dns.dns %></td>
+          <td><%= dns.url %></td>
           <td><%= dns.https %></td>
           <td><%= dns.status %></td>
           <td><%= dns.user.email %></td>

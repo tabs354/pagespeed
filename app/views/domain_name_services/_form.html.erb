@@ -5,10 +5,10 @@
       <%= form_for @domain_name_service, html: {class:"form-horizontal", role:"form"} do |f| %>
         <div class="form-group">
           <div class="control-label col-sm-2">
-            <%= f.label :dns %>
+            <%= f.label :url %>
           </div>
           <div class="control-label col-sm-8">
-            <%= f.text_field :dns, autofocus: true, autocomplete: "dns", class: "form-control", placeholder:"Enter Domain Name Service" %>
+            <%= f.text_field :url, autofocus: true, autocomplete: "Url", class: "form-control", placeholder:"Enter URL" %>
           </div>
         </div>
         <div class="form-group">
