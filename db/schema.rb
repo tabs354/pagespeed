@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_025715) do
+ActiveRecord::Schema.define(version: 2019_09_02_073016) do
 
   create_table "domain_name_services", force: :cascade do |t|
     t.boolean "https", default: true
@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_025715) do
     t.text "origin_paint"
     t.text "origin_input"
     t.text "lighthouse_result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "domain_name_service_id"
     t.text "overall_results"
   end
