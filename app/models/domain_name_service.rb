@@ -12,4 +12,8 @@ class DomainNameService < ApplicationRecord
     self.dns.delete_prefix! "https://"
     self.dns.delete_prefix! "http://"
   end
+
+  def set_url
+    (self.https? ? "https://" : "http://") + self.dns
+  end
 end

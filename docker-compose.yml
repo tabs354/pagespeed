@@ -21,6 +21,7 @@ services:
     volumes:
       - .:/usr/src/app
       - ~/.ssh:/root/.ssh:ro
+      - bundle-volume:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -38,5 +39,6 @@ services:
 
 #Volumes
 volumes:
+  bundle-volume:
   dbdata:
     driver: local
