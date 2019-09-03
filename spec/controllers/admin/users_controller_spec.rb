@@ -13,7 +13,7 @@ RSpec.describe Admin::UsersController, type: :controller do
     expect(response).to be_successful
   end
 
-  it "should have a current_user if staff sign in" do
+  it "should have a current_user if staff sign in but can't access admin page" do
     expect(subject.current_user).to eq(nil)
     sign_in staff
     expect(subject.current_user).to_not eq(nil)
