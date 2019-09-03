@@ -11,20 +11,20 @@ class PagespeedInsightsController < ApplicationController
     rescue RestClient::ExceptionWithResponse => result
       Rails.logger.info result.response
       error = ActiveSupport::JSON.decode(result.response)
-      flash[:danger] = error["error"]["message"]
+      flash[:danger] = error['error']['message']
       redirect_to domain_name_services_path
     else
       Rails.logger.info 'It worked!'
       @result = ActiveSupport::JSON.decode(@result)
-      @field_data = @result["loadingExperience"]
-      @origin_data = @result["originLoadingExperience"]
-      @lighthouse_audits = @result["lighthouseResult"]["audits"]
+      @field_data = @result['loadingExperience']
+      @origin_data = @result['originLoadingExperience']
+      @lighthouse_audits = @result['lighthouseResult']['audits']
 
       @pagespeed_insight = set_parameters(@field_data, @origin_data, @lighthouse_audits, domain_name_service.pagespeed_insights.new)
       if @pagespeed_insight.save
-        flash.now[:success] = "Pagespeed analysis result was successfully recorded"
+        flash.now[:success] = 'Pagespeed analysis result was successfully recorded'
       else
-        flash.now[:danger] = "Something went wrong in recording the pagespeed analysis result"
+        flash.now[:danger] = 'Something went wrong in recording the pagespeed analysis result'
       end
     end
   end

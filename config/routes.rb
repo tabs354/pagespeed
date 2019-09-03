@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "domain_name_services#index"
+  root 'domain_name_services#index'
 
   namespace :admin do
     resources :users

@@ -10,7 +10,7 @@ module Admin
     private
     def redirect_if_not_admin
       unless current_user.admin?
-        flash[:alert] = "Only admin can do that action!!"
+        flash[:alert] = 'Only admin can do that action!!'
         redirect_to root_path
       end
     end
