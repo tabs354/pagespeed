@@ -1,3 +1,3 @@
-every 2.minutes do
-  runner 'PagespeedResultDaily.get', output: 'log/pagespeed_result_daily.log'
+every 1.day, at: '3:00 am' do
+  runner 'PagespeedResultDaily.get'
 end
