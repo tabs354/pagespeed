@@ -1,7 +1,7 @@
 class DomainNameService < ApplicationRecord
   belongs_to :user
   has_many :pagespeed_insights
-  validates :dns, presence: true, uniqueness: {case_sensitive: false}
+  validates :url, presence: true, uniqueness: {case_sensitive: false}
   validates :https, inclusion: { in: [ true, false ] }
   validates :status, presence: true
 
@@ -9,11 +9,11 @@ class DomainNameService < ApplicationRecord
   before_update :clear_prefix
 
   def clear_prefix
-    self.dns.delete_prefix! "https://"
-    self.dns.delete_prefix! "http://"
+    self.url.delete_prefix! "https://"
+    self.url.delete_prefix! "http://"
   end
 
   def set_url
-    (self.https? ? "https://" : "http://") + self.dns
+    (self.https? ? "https://" : "http://") + self.url
   end
 end

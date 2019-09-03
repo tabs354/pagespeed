@@ -1,22 +1,21 @@
 <div class="container-fluid">
-  <ol class="breadcrumb">
-    <li><%= link_to "Home", root_path %></li>
-    <li class="active">Domain Name Services</li>
-  </ol>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Domain Name Services Management</h3>
     </div>
     <div class="panel-body">
-      <h2 align="center">List of Domain Name Services <%= link_to "+  Create", new_domain_name_service_path , class: "btn btn-success" %></h2>
+      <h2 align="center">List of Domain Name
+        Services <%= link_to '+  Create', new_domain_name_service_path, class: 'btn btn-success' %></h2>
     </div>
     <div align="center">
       <h4 align="center">Filter By Status:</h4>
-      <%= link_to "All", domain_name_services_path(:status=> nil), class: "btn btn-primary" %>
-      <%= link_to "On", domain_name_services_path(:status=> "on"), class: "btn btn-primary" %>
-      <%= link_to "Off", domain_name_services_path(:status=> "off"), class: "btn btn-primary" %>
+      <div class="btn btn-group">
+        <%= link_to 'All', domain_name_services_path(:status => nil), class: 'btn btn-primary' %>
+        <%= link_to 'On', domain_name_services_path(:status => 'on'), class: 'btn btn-warning' %>
+        <%= link_to 'Off', domain_name_services_path(:status => 'off'), class: 'btn btn-success' %>
+      </div>
     </div>
-    <table class="table">
+    <table class="table table-striped">
       <thead>
       <tr>
         <th>Domain Name Service</th>
@@ -27,17 +26,17 @@
       </tr>
       </thead>
       <tbody>
-      <% @domain_name_services.each do |dns| %>
+      <% @domain_name_services.each do |domain_name_service| %>
         <tr>
-          <td><%= dns.dns %></td>
-          <td><%= dns.https %></td>
-          <td><%= dns.status %></td>
-          <td><%= dns.user.email %></td>
-          <td><%= dns.user.role %></td>
+          <td><%= domain_name_service.url %></td>
+          <td><%= domain_name_service.https %></td>
+          <td><%= domain_name_service.status %></td>
+          <td><%= domain_name_service.user.email %></td>
+          <td><%= domain_name_service.user.role %></td>
           <td>
-            <%= link_to "Read", domain_name_service_path(dns), class: "label label-primary" %>
-            <%= link_to "Edit", edit_domain_name_service_path(dns), class: "label label-warning" %>
-            <%= link_to "Page Speed Insight", domain_name_service_pagespeed_insights_path(dns), class: "label label-success" %>
+            <%= link_to :Show, domain_name_service_path(domain_name_service), class: 'label label-primary' %>
+            <%= link_to :Edit, edit_domain_name_service_path(domain_name_service), class: 'label label-warning' %>
+            <%= link_to 'Page Speed Insight', domain_name_service_pagespeed_insights_path(domain_name_service), class: 'label label-success' %>
           </td>
         </tr>
       <% end %>

@@ -25,7 +25,6 @@
               <li><%= link_to "Users", admin_users_path %></li>
             <% end %>
             <li><%= link_to "DNS", domain_name_services_path %></li>
-            <li><%= link_to "Test Speed", "#" %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -39,7 +38,6 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "View Profile", "#" %></li>
                 <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>

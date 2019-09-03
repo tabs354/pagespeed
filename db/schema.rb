@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_073016) do
+ActiveRecord::Schema.define(version: 2019_09_02_160250) do
 
   create_table "domain_name_services", force: :cascade do |t|
     t.boolean "https", default: true
-    t.string "dns"
+    t.string "url"
     t.string "status", default: "on"
     t.integer "user_id"
     t.datetime "created_at", null: false

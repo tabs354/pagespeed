@@ -3,17 +3,15 @@ require 'faker'
 5.times do
   email = Faker::JapaneseMedia::OnePiece.unique.character.delete(' ') + "@example.com"
   puts "User: #{email}"
-  User.create(email: email,
-              password: "password")
+  User.create(email: email, password: 'password')
 end
 
 20.times do
-  dns = Faker::App.name.delete(" ")
-  dns = "www." + dns.downcase + ".com"
-  DomainNameService.create(dns: dns,
-                 status: [:off, :on].sample,
-                 user_id: User.pluck(:id).sample)
-  puts "DNS: #{dns}"
+  url = "www." + Faker::App.name.gsub(/\s+/, '-').downcase + ".com"
+  DomainNameService.create(url: url,
+                           status: [:off, :on].sample,
+                           user_id: User.pluck(:id).sample)
+  puts "URL: #{url}"
 end
 
 user = User.first
