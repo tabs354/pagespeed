@@ -24,6 +24,7 @@ module PagespeedInsightsHelper
         'second_value' => set_proportion(distributions[1]),
         'third_value' => set_proportion(distributions[2])
     }
+    origin_or_field_data
   end
 
   def set_parameters(field, origin, lighthouse, pagespeed)
