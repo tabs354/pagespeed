@@ -5,9 +5,9 @@ class PagespeedInsightsController < ApplicationController
   def show
     domain_name_service = DomainNameService.find(params[:domain_name_service_id])
     begin
-      @result = RestClient.get(Rails.application.config_for(:google_pai)['pagespeed_endpoint'],
+      @result = RestClient.get(Rails.application.config_for(:google_api)['pagespeed_endpoint'],
                                {params: {url: domain_name_service.set_url,
-                                         key: Rails.application.config_for(:google_pai)['api_key']}})
+                                         key: Rails.application.config_for(:google_api)['api_key']}})
     rescue RestClient::ExceptionWithResponse => result
       Rails.logger.info result.response
       error = ActiveSupport::JSON.decode(result.response)

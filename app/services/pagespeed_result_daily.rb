@@ -3,9 +3,9 @@ module PagespeedResultDaily
     domain_name_services = DomainNameService.all
     domain_name_services.each do |domain_name_service|
       begin
-        @result = RestClient.get(Rails.application.config_for(:google_pai)['pagespeed_endpoint'],
+        @result = RestClient.get(Rails.application.config_for(:google_api)['pagespeed_endpoint'],
                                  {params: {url: domain_name_service.set_url,
-                                           key: Rails.application.config_for(:google_pai)['api_key']}})
+                                           key: Rails.application.config_for(:google_api)['api_key']}})
       rescue RestClient::ExceptionWithResponse => result
         error = ActiveSupport::JSON.decode(result.response)
         Rails.logger.info error['error']['message']
