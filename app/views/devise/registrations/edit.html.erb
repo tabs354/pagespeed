@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'devise/shared/error_messages', resource: resource %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Edit <%= resource_name.to_s.humanize %></h3>
@@ -9,13 +9,13 @@
       <div class="row">
         <div class="col-xs-12">
           <%= form_for resource, as: resource_name, url: registration_path(resource_name),
-                       html: {class:"form-horizontal", role:"form", method: :put } do |f| %>
+                       html: {class: 'form-horizontal', role: 'form', method: :put } do |f| %>
             <div class="form-group">
               <div class="control-label col-sm-2">
                 <%= f.label :email %>
               </div>
               <div class="control-label col-sm-8">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Enter email" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: 'Enter email' %>
               </div>
             </div>
             <div class="form-group">
@@ -23,13 +23,13 @@
                 <%= f.label :current_password %>
               </div>
               <div class="control-label col-sm-8">
-                <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder:"Enter password" %>
+                <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control', placeholder: 'Enter password' %>
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <%= f.submit "Update", class:"btn btn-primary btn-lg" %>
+                <%= f.submit 'Update', class: 'btn btn-primary btn-lg' %>
               </div>
             </div>
           <% end %>

@@ -7,37 +7,37 @@
     <div class="panel-body">
       <h2 align="center">DNS Information</h2><br>
       <div class="row">
-        <div class="col-xs-12">
-          <%= form_for @domain_name_service, html: {class: 'form-horizontal', role: 'form'} do |f| %>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :url %>
-              </div>
-              <div class="control-label col-sm-8">
-                <%= f.text_field :url, class: 'form-control', disabled: true %>
-              </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Url:</h4>
             </div>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :status %>
-              </div>
-              <div class="control-label col-sm-2">
-                <%= f.text_field :status, class: 'form-control', disabled: true %>
-              </div>
-              <div class="control-label col-sm-2 col-sm-offset-2">
-                <%= f.label :https %>
-              </div>
-              <div class="control-label col-sm-2">
-                <%= f.text_field :https, class: 'form-control', disabled: true %>
-              </div>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.url %></div>
             </div>
-
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <%= link_to 'Edit this DNS', edit_domain_name_service_path(@domain_name_service), class: 'btn btn-lg btn-primary' %>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Status:</h4>
             </div>
-          <% end %>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.status %></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Https:</h4>
+            </div>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.https %></div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-offset-2 col-xs-10">
+              <%= link_to 'Edit this DNS', edit_domain_name_service_path(@domain_name_service), class: 'btn btn-md btn-primary' %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

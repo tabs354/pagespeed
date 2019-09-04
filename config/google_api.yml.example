@@ -1,0 +1,3 @@
+development:
+  pagespeed_endpoint: 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
+  api_key: 'xxxxxxxxxxxxxxxxxxxxxx'
