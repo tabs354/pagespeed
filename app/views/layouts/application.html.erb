@@ -26,6 +26,8 @@
             <% end %>
             <li><%= link_to 'DNS', domain_name_services_path %></li>
           <% end %>
+          <li><%= link_to 'English', root_path(locale: :en) %></li>
+          <li><%= link_to '中文', root_path(locale: :zh) %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
