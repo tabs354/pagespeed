@@ -1,0 +1,11 @@
+<p align="center"><b>Overall Result: <i><%= data['overall_category'] %></i></b></p><br>
+<div class="col-xs-6">
+  <p><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> First Contentful
+    Paint: <%= get_data(data, 'FIRST_CONTENTFUL_PAINT_MS') %></p>
+  <%= render 'progress', distributions: get_distribution(data, 'FIRST_CONTENTFUL_PAINT_MS') %>
+</div>
+<div class="col-xs-6">
+  <p><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> First Input
+    Delay: <%= get_data(data, 'FIRST_INPUT_DELAY_MS') %></p>
+  <%= render 'progress', distributions: get_distribution(data, 'FIRST_INPUT_DELAY_MS') %>
+</div>

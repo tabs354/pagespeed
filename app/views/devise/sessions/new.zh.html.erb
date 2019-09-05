@@ -1,0 +1,28 @@
+<div class="col-sm-4 col-sm-offset-4">
+  <div class="container-fluid" id="form-content" >
+    <h2 class="form-header" align="center">Please Login</h2>
+    <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: 'Enter Email'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', placeholder: 'Enter Password'%>
+      </div>
+
+      <div class="form-group form-check">
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        <%= f.label :remember_me, class: 'form-check-label' %>
+      </div>
+
+      <%= f.button 'Log in', class: 'btn btn-primary', type: 'submit' %>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+
+
+
+

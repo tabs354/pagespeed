@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <%= render 'shared/error_messages', resource: @domain_name_service %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Edit Domain Name Service</h3>
+    </div>
+    <%= render partial: 'domain_name_services_form', locals: {domain_name_service: @domain_name_service} %>
+  </div>
+</div>
+
+

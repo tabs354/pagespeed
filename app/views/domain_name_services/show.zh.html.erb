@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <%= render 'shared/error_messages', resource: @domain_name_service %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Show Domain Name Service</h3>
+    </div>
+    <div class="panel-body">
+      <h2 align="center">DNS Information</h2><br>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Url:</h4>
+            </div>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.url %></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Status:</h4>
+            </div>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.status %></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-2">
+              <h4>Https:</h4>
+            </div>
+            <div class="col-sm-8">
+              <div class="well-sm"><%= @domain_name_service.https %></div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-offset-2 col-xs-10">
+              <%= link_to 'Edit this DNS', edit_domain_name_service_path(@domain_name_service), class: 'btn btn-md btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
