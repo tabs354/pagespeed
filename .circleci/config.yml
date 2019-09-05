@@ -5,21 +5,22 @@
 version: 2
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
-    image: circleci/circleci/ruby:2.6.3
+    image: circleci/ruby:2.6.3
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
       BUNDLE_PATH: vendor/bundle
-      MARIADB_HOST: 127.0.0.1
-      MARIADB_USER: circleci-demo-ruby
-      MARIADB_PASSWORD: ""
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_USER: circleci-ruby
+      MYSQL_PASSWORD: 'qwer4321'
       RAILS_ENV: test
   mariadb: &mariadb
     image: circleci/mariadb:10.4
     environment:
-      MARIADB_USER: circleci-demo-ruby
-      MARIADB_DB: pagespeed_test
-      MARIADB_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: 'qwer4321'
+      MYSQL_DATABASE: pagespeed_test
+      MYSQL_USER: circleci-ruby
+      MYSQL_PASSWORD: 'qwer4321'
 
 jobs:
   build:
