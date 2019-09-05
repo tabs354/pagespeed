@@ -1,0 +1,89 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+references:
+  default_docker_ruby_executor: &default_docker_ruby_executor
+    image: circleci/circleci/ruby:2.6.3
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      MARIADB_HOST: 127.0.0.1
+      MARIADB_USER: circleci-demo-ruby
+      MARIADB_PASSWORD: ""
+      RAILS_ENV: test
+  mariadb: &mariadb
+    image: circleci/mariadb:10.4
+    environment:
+      MARIADB_USER: circleci-demo-ruby
+      MARIADB_DB: pagespeed_test
+      MARIADB_PASSWORD: ""
+
+jobs:
+  build:
+    docker:
+      - *default_docker_ruby_executor
+
+    working_directory: ~/pagespeed
+
+    steps:
+      - checkout
+      # Which version of bundler?
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      # bundle cache
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v1-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      # Store bundle cache
+      - save_cache:
+          key: rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  test:
+    parallelism: 2
+    docker:
+      - *default_docker_ruby_executor
+      - *mariadb
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v1-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      # Run rspec in parallel
+      - run:
+          command: |
+            mkdir /tmp/test-results
+            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format mariadb
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
