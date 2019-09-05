@@ -50,6 +50,7 @@ RSpec.describe "DomainNameServices", type: :request do
       expect {
         post domain_name_services_path, params: {domain_name_service: domain_name_service}
       }.to change {DomainNameService.count}
+      expect(DomainNameService.last.url).to eq(domain_name_service[:url])
     end
   end
 
