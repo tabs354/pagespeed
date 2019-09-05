@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'domain_name_services#index'
 
-  namespace :admin do
+  namespace :admin, only: :index do
     resources :users
   end
 
