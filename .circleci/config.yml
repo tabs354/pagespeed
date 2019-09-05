@@ -50,7 +50,7 @@ jobs:
             - vendor/bundle
 
   test:
-    parallelism: 2
+    parallelism: 1
     docker:
       - *default_docker_ruby_executor
       - *mariadb
