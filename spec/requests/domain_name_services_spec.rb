@@ -63,8 +63,9 @@ RSpec.describe "DomainNameServices", type: :request do
     let(:staff2) {create(:user, email: 'staff2@foobar.com')}
     let(:domain_name_service_new) {create(:domain_name_service,url: 'onepiece.com', https: true, status: :on,user: staff1)}
     it 'will redirect to other page if not login' do
-      get edit_domain_name_service_path(domain_name_service_new)
+      route_send = get edit_domain_name_service_path(domain_name_service_new)
       expect(response).to have_http_status(302)
+      expect(route_send).to redirect_to(new_user_session_path)
     end
     it 'Checking who can access DomainNameService edit page if admin ,the same staff or the other staff' do
       sign_in admin
@@ -78,7 +79,8 @@ RSpec.describe "DomainNameServices", type: :request do
       sign_out staff1
 
       sign_in staff2
-      get edit_domain_name_service_path(domain_name_service_new)
+      route_send = get edit_domain_name_service_path(domain_name_service_new)
+      expect(route_send).to redirect_to(root_path)
       expect(response).to have_http_status(302)
     end
 
@@ -92,7 +94,7 @@ RSpec.describe "DomainNameServices", type: :request do
     let(:domain_name_service_new) {create(:domain_name_service,url: 'onepiece.com', https: true, status: :on,user: staff1)}
     it 'will redirect to other page if not login' do
       route_send = get domain_name_service_path(domain_name_service_new)
-      expect(route_send).to redirect_to(root_path)
+      expect(route_send).to redirect_to(new_user_session_path)
       expect(response).to have_http_status(302)
     end
     it 'Checking who can access DomainNameService edit page if admin ,the same staff or the other staff' do
@@ -107,7 +109,7 @@ RSpec.describe "DomainNameServices", type: :request do
       sign_out staff1
 
       sign_in staff2
-      get domain_name_service_path(domain_name_service_new)
+      route_send = get domain_name_service_path(domain_name_service_new)
       expect(route_send).to redirect_to(root_path)
       expect(response).to have_http_status(302)
     end
@@ -157,5 +159,4 @@ RSpec.describe "DomainNameServices", type: :request do
 
     end
   end
-
 end
