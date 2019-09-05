@@ -74,7 +74,12 @@ jobs:
           command: |
             mkdir /tmp/test-results
             TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format mariadb
+            bundle exec rspec  --profile 10 \
+                               --format RspecJunitFormatter \
+                               --out /tmp/test-results/rspec.xml \
+                               --format mariadb \
+                               $TESTFILES
+
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
