@@ -81,10 +81,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
 
       new_field = helper.set_origin_or_field(field,'FIRST_CONTENTFUL_PAINT_MS')
 
-      expect(new_field).to have_key('category')
-      expect(new_field).to have_key('first_value')
-      expect(new_field).to have_key('second_value')
-      expect(new_field).to have_key('third_value')
+      expect(new_field.keys.count).to eq(4)
     end
   end
 
