@@ -36,11 +36,10 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
               }
           }
       }
-
-      expect(new_field.keys.count).to eq(4)
       expect(helper.get_distribution(field,'FIRST_CONTENTFUL_PAINT_MS')).to have_key(0)
       expect(helper.get_distribution(field,'FIRST_CONTENTFUL_PAINT_MS')).to have_key(1)
       expect(helper.get_distribution(field,'FIRST_CONTENTFUL_PAINT_MS')).to have_key(2)
+      expect(helper.get_distribution(field,'FIRST_CONTENTFUL_PAINT_MS').keys.count).to eq(3)
     end
   end
 
