@@ -23,7 +23,7 @@ references:
       MYSQL_PASSWORD: 'qwer4321'
 
 jobs:
-  test:
+  build:
     parallelism: 3
     docker:
       - *default_docker_ruby_executor
