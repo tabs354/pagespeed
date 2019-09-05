@@ -1,17 +1,8 @@
 require 'rails_helper'
-# Specs in this file have access to a helper object that includes
-# the PagespeedInsightsHelperHelper. For example:
-#
-# describe PagespeedInsightsHelperHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
+
 RSpec.describe PagespeedInsightsHelper, type: :helper do
   describe '#progress' do
-    it 'returns the instance variable of progress' do
+    it 'should return the data of progress with given index and must be equal to constants :success, :info, and :danger' do
       expect(helper.progress(0)).to eq(:success)
       expect(helper.progress(1)).to eq(:info)
       expect(helper.progress(2)).to eq(:danger)
@@ -19,7 +10,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
   end
 
   describe '#get_data' do
-    it 'gets the data' do
+    it 'should get the category and must be equal to the given category data. In this case SLOW' do
       field = {
           'metrics' => {
               'FIRST_CONTENTFUL_PAINT_MS' => {
@@ -33,7 +24,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
   end
 
   describe '#get_distribution' do
-    it 'gets the distribution proportion' do
+    it 'should get the distribution proportion and expect to have 3 keys.' do
       field = {
           'metrics' => {
               'FIRST_CONTENTFUL_PAINT_MS' => {
@@ -53,7 +44,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
   end
 
   describe '#set_proportion' do
-    it 'sets the proportion of distribution' do
+    it 'should get the proportion data with its value multiplied by 100' do
       field = {
           'metrics' => {
               'FIRST_CONTENTFUL_PAINT_MS' => {
@@ -74,7 +65,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
   end
 
   describe '#set_origin_or_field' do
-    it 'should set data for origin or field' do
+    it 'should set data for origin or field and expect to have 4 keys' do
       field = {
           'metrics' => {
               'FIRST_CONTENTFUL_PAINT_MS' => {
@@ -98,7 +89,7 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
   end
 
   describe '#set_parameters' do
-    it 'should set parameters for pagespeed insight' do
+    it 'should set parameters for pagespeed insight and expect that pagespeed insight column values not equal to nil' do
       field = {
           'metrics' => {
               'FIRST_CONTENTFUL_PAINT_MS' => {
@@ -151,9 +142,14 @@ RSpec.describe PagespeedInsightsHelper, type: :helper do
 
       }
 
-      pagespeed_insight = FactoryBot.build(:pagespeed_insight)
-      pagespeed = set_parameters(field, origin, lighthouse, pagespeed_insight)
-      expect(pagespeed).not_to eq(nil)
+      pagespeed = set_parameters(field, origin, lighthouse, build(:pagespeed_insight))
+
+      expect(pagespeed.lighthouse_result).not_to eq(nil)
+      expect(pagespeed.overall_results).not_to eq(nil)
+      expect(pagespeed.field_paint).not_to eq(nil)
+      expect(pagespeed.field_input).not_to eq(nil)
+      expect(pagespeed.origin_paint).not_to eq(nil)
+      expect(pagespeed.origin_input).not_to eq(nil)
     end
   end
 end
