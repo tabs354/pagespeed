@@ -23,19 +23,18 @@ references:
       MYSQL_PASSWORD: 'qwer4321'
 
 jobs:
-  build:
+  test:
+    parallelism: 3
     docker:
       - *default_docker_ruby_executor
-
-    working_directory: ~/pagespeed
-
+      - *mariadb
     steps:
       - checkout
-      # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      # bundle cache
+      # Rails & bundle cache
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v1-
       - restore_cache:
           keys:
             - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
@@ -48,21 +47,7 @@ jobs:
           key: rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-  test:
-    parallelism: 2
-    docker:
-      - *default_docker_ruby_executor
-      - *mariadb
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v1-
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
+      #DB
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
@@ -80,11 +65,3 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
