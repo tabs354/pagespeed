@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Make your web pages fast on all devices</h3>
+    </div>
+    <div class="panel-body">
+      <h2 align="center">Analysis result of <%= @result['id'] %></h2><br>
+      <div class="alert alert-info" role="alert">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <strong>NOTE:</strong> Percentages display may not total to 100% due to rounding.
+      </div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4 class="panel-custom-title"><a data-toggle="collapse" href="#field-data">Field Data</a></h4>
+              <div id="field-data">
+                <%= render 'data', data: @field_data %>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4 class="panel-custom-title"><a data-toggle="collapse" href="#origin-data">Origin Data</a></h4>
+              <div id="origin-data">
+                <%= render 'data', data: @origin_data %>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              <h4 class="panel-custom-title"><a data-toggle="collapse" href="#lighthouse-data">Lighthouse Result</a>
+              </h4>
+              <div id="lighthouse-data">
+                <div class="col-xs-6 lighthouse">
+                  <div class="well orange">First Contentful
+                    Paint: <%= @lighthouse_audits['first-contentful-paint']['displayValue'] %></div>
+                  <div class="well blue">First Meaningful
+                    Paint: <%= @lighthouse_audits['first-meaningful-paint']['displayValue'] %></div>
+                  <div class="well green">Estimated Input
+                    Latency: <%= @lighthouse_audits['estimated-input-latency']['displayValue'] %></div>
+                </div>
+                <div class="col-xs-6 lighthouse">
+                  <div class="well orange">Time to
+                    Interactive: <%= @lighthouse_audits['interactive']['displayValue'] %></div>
+                  <div class="well blue">First CPU
+                    Idle: <%= @lighthouse_audits['first-cpu-idle']['displayValue'] %></div>
+                  <div class="well green">Speed Index: <%= @lighthouse_audits['speed-index']['displayValue'] %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
