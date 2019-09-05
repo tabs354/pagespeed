@@ -21,5 +21,19 @@ RSpec.describe "Admin::Users", type: :request do
       get admin_users_path
       expect(response).to have_http_status(200)
     end
+
+    it 'should view user in page if admin' do
+      new_user = create(:user, email: 'another@foobar.com')
+      sign_in admin
+      get admin_users_path
+      expect(response.body).to include(new_user.email)
+    end
+
+    it 'should not view user in page if not admin' do
+      new_user = create(:user, email: 'another@foobar.com')
+      sign_in staff
+      get admin_users_path
+      expect(response.body).not_to include(new_user.email)
+    end
   end
 end
