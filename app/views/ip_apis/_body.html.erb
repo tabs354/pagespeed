@@ -1,0 +1,19 @@
+<% if @ip_api || @ip_api['status'] == 'success' %>
+  <br><br>
+  <div class="well">
+    <strong> Data from http://ip-api.com/</strong>
+    <strong> Country: </strong><%= @ip_api["as"] %><br>
+    <strong> City: </strong><%= @ip_api["city"] %><br>
+    <strong> Countrycode: </strong><%= @ip_api["countryCode"] %><br>
+    <strong> Isp: </strong><%= @ip_api["isp"] %><br>
+    <strong> latitude: </strong><%= @ip_api["lat"] %><br>
+    <strong> longitude: </strong><%= @ip_api["lon"] %><br>
+    <strong> Organization: </strong><%= @ip_api["org"] %><br>
+    <strong> Query: </strong><%= @ip_api["query"] %><br>
+    <strong> Region: </strong><%= @ip_api["region"] %><br>
+    <strong> Region Name: </strong><%= @ip_api["regionName"] %><br>
+    <strong> Status: </strong><%= @ip_api["status"] %><br>
+    <strong> Timezone: </strong><%= @ip_api["timezone"] %><br>
+    <strong> Zip Code: </strong><%= @ip_api["zip"] %><br>
+  </div>
+<% end %>

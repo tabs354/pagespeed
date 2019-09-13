@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Get IP and Location from API</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= form_tag api_search_path,remote: true, method: :get do %>
+            <div class="form-group row no-padding text-center col-md-12">
+              <div class="col-md-10">
+                <%= text_field_tag :ip_api, params[:ip_api], placeholder: "IPv4 or Domain Name Service", autofocus: true,
+                                   class: "form-control search-box input-lg" %>
+              </div>
+              <div class="col-md-2">
+                <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+                  <i class="fa fa-search">search ip</i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="ip-api-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
